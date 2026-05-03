@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COJEHA — For the Youth of Haïti</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#1a2a5e;--blue:#293e8a;--sky:#38aff4;--sky-lt:#a8dcf8;
+  --sky-pale:#daf0fd;--white:#ffffff;--off:#f7fbff;
+  --yellow:#F2C94C;--yellow-dk:#e0b800;--yellow-pale:#fef9e7;
+  --text:#0d1a3a;--gray:#5a6a8a;--border:rgba(41,62,138,0.1);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:62px;display:flex;align-items:center;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border);}
+.nav-inner{max-width:1320px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;padding:0 44px;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:4px;cursor:pointer;}
+.logo-dot{width:7px;height:7px;border-radius:50%;background:var(--yellow);display:inline-block;margin-bottom:1px;}
+.nav-links{display:flex;list-style:none;align-items:center;}
+.nav-links a{font-family:'Glacial Indifference',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);text-decoration:none;padding:0 11px;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:var(--navy);border-bottom-color:var(--yellow);}
+.nav-cta{background:var(--yellow)!important;color:var(--navy)!important;height:32px!important;padding:0 18px!important;border-radius:3px;font-weight:700!important;border-bottom:none!important;margin-left:8px;align-self:center;transition:background .2s!important;}
+.nav-cta:hover{background:var(--yellow-dk)!important;}
+.lang-btn{font-family:'Glacial Indifference',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);background:none;border:1px solid var(--border);border-radius:3px;padding:5px 10px;cursor:pointer;margin-left:8px;transition:all .2s;}
+.lang-btn:hover{border-color:var(--yellow);color:var(--navy);}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:62px;}
+#page-gallery{display:none!important;}
+.page.active{display:block;}
+
+/* BACK BAR */
+.back-bar{display:flex;align-items:center;gap:12px;padding:13px 52px;background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:100;}
+.back-btn{font-family:'Glacial Indifference',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.back-btn:hover{color:var(--navy);}
+.back-btn::before{content:'←';font-size:14px;}
+.breadcrumb{font-family:'Glacial Indifference',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow-dk);}
+
+/* BUTTONS */
+.btn-yellow{background:var(--yellow);color:var(--navy);padding:13px 30px;border-radius:3px;font-family:'Glacial Indifference',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;border:none;cursor:pointer;}
+.btn-yellow:hover{background:var(--yellow-dk);transform:translateY(-2px);}
+.btn-navy{background:var(--navy);color:#fff;padding:13px 30px;border-radius:3px;font-family:'Glacial Indifference',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;border:none;cursor:pointer;}
+.btn-navy:hover{background:var(--blue);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--navy);padding:13px 30px;border-radius:3px;font-family:'Glacial Indifference',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-decoration:none;display:inline-block;border:1.5px solid rgba(13,26,58,0.22);transition:all .2s;cursor:pointer;}
+.btn-outline:hover{border-color:var(--yellow);color:var(--navy);background:var(--yellow-pale);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,var(--sky) 0%,#5dc5f8 28%,var(--sky-lt) 58%,var(--sky-pale) 82%,#f0f8ff 100%);display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:80px 52px;}
+.hero-photo{position:absolute;top:0;right:0;width:48%;height:100%;overflow:hidden;}
+/* PHOTO PLACEHOLDER: replace .hero-photo-img with <img src="hero.jpg"> */
+.hero-photo-img{width:100%;height:100%;background:linear-gradient(160deg,var(--sky-lt),var(--sky-pale));display:flex;align-items:center;justify-content:center;}
+.hero-photo-img p{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(41,62,138,0.2);text-align:center;padding:0 32px;line-height:1.8;}
+/* Seamless fade from hero bg into the photo, both sides */
+.hero-photo::before{content:'';position:absolute;left:0;top:0;bottom:0;width:180px;background:linear-gradient(to right,#daf0fd,transparent);z-index:2;pointer-events:none;}
+.hero-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#f0f8ff,transparent);z-index:2;pointer-events:none;}
+.hero-content{position:relative;z-index:2;max-width:760px;}
+h1.hero-h{font-family:'Cormorant Garamond',serif;font-size:clamp(72px,10vw,136px);font-weight:700;line-height:.87;color:var(--navy);letter-spacing:-.02em;}
+h1.hero-h em{font-style:italic;color:var(--blue);}
+.hero-rule{width:72px;height:3px;background:var(--yellow);margin:40px 0;}
+.hero-body{font-size:16px;color:rgba(13,26,58,0.65);line-height:1.88;max-width:460px;}
+.hero-acts{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap;align-items:center;}
+.hero-scroll{position:absolute;bottom:44px;right:52px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(13,26,58,0.3);font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;}
+.hs-bar{width:1px;height:40px;background:rgba(13,26,58,0.15);animation:hb 2.2s ease-in-out infinite;}
+@keyframes hb{0%,100%{height:40px;opacity:.3}50%{height:64px;opacity:.65}}
+
+/* STATS */
+.stats-band{background:linear-gradient(to right,var(--navy) 0%,var(--blue) 28%,var(--sky) 58%,var(--sky-lt) 78%,#eaf6fd 100%);display:flex;flex-wrap:wrap;}
+.stat-item{flex:1;min-width:140px;padding:40px 28px;border-right:1px solid rgba(255,255,255,0.14);}
+.stat-item:last-child{border-right:none;}
+.stat-n{font-family:'Montserrat',sans-serif;font-size:44px;font-weight:700;color:var(--yellow);line-height:1;letter-spacing:-.02em;}
+.stat-item:nth-child(4) .stat-n,.stat-item:nth-child(5) .stat-n{color:var(--navy);}
+.stat-l{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:8px;}
+.stat-item:nth-child(4) .stat-l,.stat-item:nth-child(5) .stat-l{color:rgba(13,26,58,0.45);}
+
+/* SECTION */
+.section{padding:92px 52px;}
+.section-inner{max-width:1280px;margin:0 auto;}
+.section-kicker{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);margin-bottom:18px;background:var(--yellow);display:inline-block;padding:4px 10px;border-radius:2px;}
+h2.title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,72px);font-weight:700;line-height:.93;letter-spacing:-.02em;color:var(--text);}
+h2.title em{font-style:italic;color:var(--blue);}
+
+/* MISSION SECTION */
+.mission-section{background:var(--navy);padding:80px 52px;}
+.mission-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:center;}
+.mission-label{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;}
+.mission-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:700;color:#fff;line-height:.95;}
+.mission-title em{font-style:italic;color:var(--sky-lt);}
+.mission-pillars{display:flex;flex-direction:column;gap:20px;}
+.mission-pillar{display:flex;gap:20px;align-items:flex-start;padding:22px 24px;border-radius:4px;background:rgba(255,255,255,0.04);transition:background .2s;}
+.mission-pillar:hover{background:rgba(255,255,255,0.07);}
+.pillar-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pillar-text h4{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#fff;margin-bottom:6px;}
+.pillar-text p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.72;}
+
+/* STORY BAND */
+.story-band{display:grid;grid-template-columns:1fr 1fr;min-height:540px;}
+.story-left{padding:88px 60px 72px 52px;display:flex;flex-direction:column;justify-content:center;background:var(--white);}
+.story-right{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,var(--sky) 0%,var(--sky-lt) 60%,var(--sky-pale) 100%);}
+/* PHOTO PLACEHOLDER: replace .story-photo-ph with <img src="story.jpg" style="width:100%;height:100%;object-fit:cover;"> */
+.story-photo-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.story-photo-ph p{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(41,62,138,0.22);text-align:center;padding:0 40px;line-height:1.9;}
+/* Seamless left-side fade */
+.story-right::before{content:'';position:absolute;left:0;top:0;bottom:0;width:120px;background:linear-gradient(to right,var(--white),transparent);z-index:2;pointer-events:none;}
+.story-year-bg{font-family:'Cormorant Garamond',serif;font-size:clamp(140px,20vw,260px);font-weight:700;color:rgba(41,62,138,0.06);line-height:1;letter-spacing:-.04em;position:absolute;bottom:-30px;right:-20px;}
+.story-body-text{display:flex;flex-direction:column;gap:18px;margin-top:26px;}
+.story-body-text p{font-size:15px;line-height:1.92;color:#2a3a6a;}
+
+/* TIMELINE */
+.tl-strip{background:var(--white);padding:60px 52px;overflow-x:auto;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.tl-track{display:flex;position:relative;min-width:700px;}
+.tl-track::before{content:'';position:absolute;top:20px;left:0;right:0;height:1px;background:rgba(41,62,138,0.12);}
+.tl-item{flex:1;padding-top:54px;padding-right:20px;position:relative;transition:transform .22s;}
+.tl-item:hover{transform:translateY(-4px);}
+.tl-dot{width:40px;height:40px;border-radius:50%;background:var(--yellow);border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Glacial Indifference',sans-serif;font-size:11px;font-weight:700;color:var(--navy);position:absolute;top:0;left:0;transition:transform .2s;}
+.tl-item:hover .tl-dot{transform:scale(1.12);}
+.tl-item h4{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
+.tl-item p{font-size:12px;color:var(--gray);margin-top:6px;line-height:1.65;}
+
+/* HORIZONTAL CHAPTER TIMELINE (Project 2026) */
+.horiz-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px;position:relative;}
+.horiz-chapter{padding:32px 28px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);position:relative;}
+.horiz-chapter.active-ch{border-color:var(--yellow);background:rgba(242,201,76,0.07);}
+.horiz-top{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.horiz-circle{width:38px;height:38px;border-radius:50%;background:transparent;border:2px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-family:'Glacial Indifference',sans-serif;font-size:11px;color:var(--yellow);font-weight:700;flex-shrink:0;}
+.horiz-chapter.active-ch .horiz-circle{background:var(--yellow);color:var(--navy);}
+.horiz-year-lbl{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.horiz-chapter.active-ch .horiz-year-lbl{color:var(--yellow);}
+.horiz-year-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:rgba(255,255,255,0.7);line-height:1;}
+.horiz-chapter.active-ch .horiz-year-num{color:var(--yellow);}
+.horiz-body h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:10px;}
+.horiz-body p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.78;margin-bottom:14px;}
+.horiz-chapter.active-ch .horiz-body p{color:rgba(255,255,255,0.75);}
+.horiz-bullets{display:flex;flex-direction:column;gap:7px;}
+.horiz-bullet{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.45);line-height:1.55;}
+.horiz-chapter.active-ch .horiz-bullet{color:rgba(255,255,255,0.8);}
+.horiz-bullet::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:5px;}
+
+/* PROGRAMS */
+.prog-list{border-top:1px solid var(--border);}
+.prog-row{border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.prog-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--yellow);transform:scaleY(0);transform-origin:bottom;transition:transform .3s;}
+.prog-row:hover::before,.prog-row.open::before{transform:scaleY(1);}
+.prog-header-row{display:grid;grid-template-columns:68px 1fr auto;padding:26px 52px;cursor:pointer;transition:background .2s;}
+.prog-row:hover .prog-header-row,.prog-row.open .prog-header-row{background:var(--yellow-pale);}
+.prog-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:rgba(242,201,76,0.25);line-height:1;padding-top:2px;transition:color .3s;}
+.prog-row:hover .prog-num,.prog-row.open .prog-num{color:rgba(242,201,76,0.6);}
+.prog-title-area h4{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:700;color:var(--text);line-height:1.05;transition:color .2s;}
+.prog-row:hover h4,.prog-row.open h4{color:var(--navy);}
+.prog-subtitle{font-size:13px;color:var(--gray);margin-top:3px;}
+.prog-meta-col{display:flex;flex-direction:column;align-items:flex-end;gap:10px;padding-top:4px;}
+.prog-badge{font-family:'Glacial Indifference',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:2px;white-space:nowrap;}
+.b-a{background:var(--yellow);color:var(--navy);}
+.b-p{background:rgba(41,62,138,0.08);color:var(--navy);}
+.b-x{background:rgba(90,106,138,0.08);color:var(--gray);}
+.prog-toggle{font-size:18px;color:var(--yellow-dk);transition:transform .3s,color .2s;}
+.prog-row.open .prog-toggle{transform:rotate(45deg);}
+.prog-expand{height:0;overflow:hidden;transition:height .38s ease,opacity .3s;opacity:0;}
+.prog-row.open .prog-expand{opacity:1;}
+.prog-expand-inner{padding:0 52px 28px;}
+.prog-detail-text{font-size:14px;line-height:1.88;color:var(--gray);max-width:680px;margin-bottom:18px;}
+.prog-photos{display:flex;gap:8px;margin-bottom:18px;overflow-x:auto;padding-bottom:4px;}
+.prog-photo{flex-shrink:0;width:190px;height:120px;border-radius:4px;background:linear-gradient(135deg,var(--sky-pale),var(--sky-lt));display:flex;align-items:center;justify-content:center;font-family:'Glacial Indifference',sans-serif;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:rgba(41,62,138,0.25);text-align:center;padding:10px;}
+/* PHOTO PLACEHOLDER: replace each .prog-photo with <img src="photo.jpg" style="width:190px;height:120px;object-fit:cover;border-radius:4px;"> */
+.prog-actions{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* GALLERY */
+.album-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;}
+.album{border-radius:8px;overflow:hidden;border:1px solid var(--border);transition:transform .25s,box-shadow .25s;}
+.album:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(41,62,138,0.1);}
+.album-cover{height:190px;overflow:hidden;position:relative;cursor:pointer;}
+/* PHOTO PLACEHOLDER: replace .album-cover-ph with <img src="cover.jpg" style="width:100%;height:190px;object-fit:cover;"> */
+.album-cover-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(41,62,138,0.22);text-align:center;padding:20px;}
+.c1{background:linear-gradient(135deg,var(--navy),var(--blue));}
+.c2{background:linear-gradient(135deg,var(--blue),var(--sky));}
+.c3{background:linear-gradient(150deg,var(--sky),var(--sky-lt));}
+.c4{background:linear-gradient(135deg,#162050,var(--blue));}
+.c5{background:linear-gradient(135deg,var(--sky-lt),var(--sky-pale));}
+.c6{background:linear-gradient(135deg,var(--navy),var(--sky));}
+.album-expand-btn{position:absolute;bottom:10px;right:10px;background:var(--yellow);color:var(--navy);font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 10px;border-radius:2px;border:none;cursor:pointer;z-index:2;transition:background .2s;}
+.album-expand-btn:hover{background:var(--yellow-dk);}
+.album-info{padding:16px 18px 20px;background:var(--white);}
+.album-info h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy);}
+.album-info p{font-size:12px;color:var(--gray);margin-top:4px;line-height:1.5;}
+.album-count{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow-dk);margin-top:8px;}
+.album-strip{display:flex;gap:6px;overflow-x:auto;padding:10px 0 4px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
+.album.expanded .album-strip{max-height:200px;padding:10px 0;}
+.album-strip-ph{flex-shrink:0;width:110px;height:72px;border-radius:3px;background:var(--sky-pale);display:flex;align-items:center;justify-content:center;font-family:'Glacial Indifference',sans-serif;font-size:8px;color:rgba(41,62,138,0.3);text-align:center;padding:8px;cursor:pointer;transition:transform .2s;}
+.album-strip-ph:hover{transform:scale(1.04);}
+/* PHOTO PLACEHOLDER: replace each .album-strip-ph with <img src="photo.jpg" style="width:110px;height:72px;object-fit:cover;border-radius:3px;cursor:pointer;"> */
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(10,18,44,0.92);z-index:500;align-items:center;justify-content:center;}
+.lightbox.open{display:flex;}
+.lightbox-img{max-width:80vw;max-height:80vh;border-radius:4px;object-fit:contain;}
+.lightbox-close{position:absolute;top:24px;right:32px;font-size:32px;color:#fff;cursor:pointer;background:none;border:none;font-family:'Cormorant Garamond',serif;}
+
+/* EVENTS */
+.events-page{background:linear-gradient(170deg,var(--sky) 0%,var(--sky-lt) 42%,var(--sky-pale) 72%,#f0f8ff 100%);}
+.event-row{display:grid;grid-template-columns:100px 1fr auto;align-items:center;gap:40px;padding:26px 0;border-bottom:1px solid rgba(13,26,58,0.08);position:relative;transition:background .2s;}
+.event-row:first-child{border-top:1px solid rgba(13,26,58,0.08);}
+.e-date{text-align:right;padding-right:28px;border-right:1px solid rgba(13,26,58,0.1);}
+.e-mo{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);}
+.e-dy{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1;}
+.e-h{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--text);}
+.e-p{font-size:13px;color:rgba(13,26,58,0.5);margin-top:4px;line-height:1.5;}
+.e-badge{font-family:'Glacial Indifference',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:3px;white-space:nowrap;}
+.eb-done{background:var(--yellow-pale);color:var(--navy);border:1px solid var(--yellow);}
+.eb-on{background:rgba(41,62,138,0.08);color:var(--navy);border:1px solid rgba(41,62,138,0.2);}
+.eb-ex{background:rgba(13,26,58,0.05);color:rgba(13,26,58,0.38);border:1px solid rgba(13,26,58,0.1);}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.team-card{background:var(--white);overflow:hidden;transition:transform .28s,box-shadow .28s;border:1px solid transparent;}
+.team-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(41,62,138,0.1);border-color:var(--yellow);}
+.avatar{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;}
+/* PHOTO PLACEHOLDER: replace .avatar content with <img src="photo.jpg" style="width:100%;height:100%;object-fit:cover;"> */
+.avatar p{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:0 20px;line-height:1.8;}
+.av1{background:linear-gradient(150deg,var(--blue),var(--sky));} .av1 p{color:rgba(255,255,255,0.22);}
+.av2{background:linear-gradient(150deg,var(--navy),var(--blue));} .av2 p{color:rgba(255,255,255,0.18);}
+.av3{background:linear-gradient(150deg,var(--sky-lt),var(--sky));} .av3 p{color:rgba(41,62,138,0.28);}
+.av4{background:linear-gradient(150deg,var(--sky-pale),var(--sky-lt));} .av4 p{color:rgba(41,62,138,0.28);}
+.team-info{padding:18px 20px 24px;}
+.team-info h4{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;color:var(--text);}
+.team-info .role{font-family:'Glacial Indifference',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow-dk);margin-top:4px;}
+.team-info .bio{font-size:13px;color:var(--gray);margin-top:10px;line-height:1.72;}
+
+/* DONATE */
+.donate-hero{background:linear-gradient(160deg,var(--sky) 0%,var(--sky-lt) 55%,var(--sky-pale) 100%);padding:80px 52px 72px;position:relative;overflow:hidden;}
+.donate-hero::after{content:'2026';position:absolute;bottom:-40px;right:-20px;font-family:'Cormorant Garamond',serif;font-size:240px;font-weight:700;color:rgba(41,62,138,0.06);line-height:1;pointer-events:none;}
+.donate-hero h2{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,92px);font-weight:700;line-height:.9;color:var(--navy);letter-spacing:-.02em;}
+.donate-hero h2 em{font-style:italic;color:var(--blue);}
+.donate-hero-sub{font-size:16px;color:rgba(13,26,58,0.6);line-height:1.85;max-width:480px;margin-top:22px;}
+
+/* MAY 2026 UPDATE BOX */
+.update-box{background:var(--yellow);border-radius:6px;padding:32px 36px;margin-bottom:40px;position:relative;overflow:hidden;}
+.update-tag{position:absolute;top:0;left:0;background:var(--navy);color:var(--yellow);font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:6px 14px;border-radius:0 0 4px 0;}
+.update-box h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--navy);margin-top:24px;margin-bottom:10px;}
+.update-box p{font-size:14px;color:rgba(13,26,58,0.75);line-height:1.78;}
+.update-box .btn-navy{margin-top:20px;}
+
+.donate-body{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0 52px 96px;margin-top:48px;}
+.tiers-col{padding-right:56px;border-right:1px solid var(--border);}
+.tiers-col h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.tiers-note{font-size:13px;color:var(--gray);margin-bottom:22px;}
+.tier{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 24px;border:1px solid var(--border);border-radius:6px;margin-bottom:6px;text-decoration:none;background:var(--white);transition:all .25s;position:relative;overflow:hidden;}
+.tier::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--yellow);transform:scaleY(0);transition:transform .3s;transform-origin:bottom;}
+.tier:hover{border-color:var(--yellow);background:var(--yellow-pale);padding-left:30px;}
+.tier:hover::before{transform:scaleY(1);}
+.tier-amt{font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;}
+.tier-txt{font-size:13px;color:var(--gray);line-height:1.65;flex:1;}
+.tier-arrow{font-size:18px;color:var(--yellow-dk);flex-shrink:0;transition:transform .2s;}
+.tier:hover .tier-arrow{transform:translateX(4px);}
+.connect-col{padding-left:56px;}
+.connect-col h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--navy);margin-bottom:22px;}
+.soc-list{display:flex;flex-direction:column;gap:8px;margin-bottom:40px;}
+.soc{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid var(--border);border-radius:4px;color:var(--gray);font-family:'Glacial Indifference',sans-serif;font-size:10px;letter-spacing:.07em;text-decoration:none;transition:all .22s;}
+.soc:hover{border-color:var(--yellow);color:var(--navy);padding-left:22px;background:var(--yellow-pale);}
+.soc span{opacity:.3;}
+.fg{margin-bottom:13px;}
+.fg label{display:block;font-family:'Glacial Indifference',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(13,26,58,0.4);margin-bottom:7px;}
+.fg input,.fg textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:4px;font-family:'Montserrat',sans-serif;font-size:14px;color:var(--text);background:var(--white);outline:none;transition:border-color .2s;}
+.fg input:focus,.fg textarea:focus{border-color:var(--yellow);}
+.fg textarea{resize:vertical;min-height:96px;}
+.btn-send{width:100%;background:var(--yellow);color:var(--navy);padding:13px;border:none;border-radius:4px;font-family:'Glacial Indifference',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .2s;}
+.btn-send:hover{background:var(--yellow-dk);}
+
+/* FOOTER */
+footer{background:var(--yellow);padding:52px 52px 28px;}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(13,26,58,0.12);max-width:1280px;margin:0 auto;}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--navy);}
+.footer-dot{width:7px;height:7px;border-radius:50%;background:var(--navy);display:inline-block;margin-left:3px;margin-bottom:6px;}
+.footer-tag{font-size:13px;color:rgba(13,26,58,0.6);margin-top:8px;max-width:220px;line-height:1.72;}
+.footer-slogan{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(13,26,58,0.55);margin-top:10px;}
+.fl h5{font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(13,26,58,0.5);margin-bottom:14px;}
+.fl a{display:block;font-size:13px;color:rgba(13,26,58,0.6);text-decoration:none;margin-bottom:9px;transition:color .2s,padding-left .15s;cursor:pointer;font-family:'Montserrat',sans-serif;}
+.fl a:hover{color:var(--navy);padding-left:6px;}
+.footer-btm{padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Glacial Indifference',sans-serif;font-size:9px;color:rgba(13,26,58,0.4);max-width:1280px;margin:0 auto;}
+
+/* ANIMATIONS */
+.fi{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.fi.vis{opacity:1;transform:translateY(0);}
+.fi-l{opacity:0;transform:translateX(-28px);transition:opacity .7s ease,transform .7s ease;}
+.fi-l.vis{opacity:1;transform:translateX(0);}
+.fi-r{opacity:0;transform:translateX(28px);transition:opacity .7s ease,transform .7s ease;}
+.fi-r.vis{opacity:1;transform:translateX(0);}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .nav-inner{padding:0 20px;}
+  .nav-links a{font-size:9px;padding:0 7px;}
+  .hero,.section{padding:64px 24px;}
+  .hero-photo{display:none;}
+  h1.hero-h{font-size:clamp(60px,14vw,90px);}
+  .story-band{grid-template-columns:1fr;}
+  .story-right{height:220px;}
+  .story-left{padding:64px 24px;}
+  .tl-strip{padding:48px 24px;}
+  .horiz-timeline{grid-template-columns:1fr;}
+  .prog-header-row{grid-template-columns:52px 1fr auto;padding:20px 24px;}
+  .prog-expand-inner{padding:0 24px 24px;}
+  .album-grid{grid-template-columns:1fr 1fr;}
+  .event-row{grid-template-columns:72px 1fr;gap:20px;}
+  .e-badge{display:none;}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .donate-body{grid-template-columns:1fr;}
+  .tiers-col{padding-right:0;border-right:none;border-bottom:1px solid var(--border);padding-bottom:40px;margin-bottom:40px;}
+  .connect-col{padding-left:0;}
+  .stat-item{padding:32px 16px;}
+  footer{padding:40px 24px 24px;}
+  .back-bar{padding:12px 24px;}
+  .donate-hero{padding:64px 24px;}
+  .donate-body{padding:0 24px 64px;}
+  .mission-inner{grid-template-columns:1fr;}
+  .mission-section{padding:64px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" onclick="goPage('home')">COJEHA<span class="logo-dot"></span></a>
+    <ul class="nav-links">
+      <li><a onclick="goPage('home')" data-page="home" data-en="Home" data-fr="Accueil">Home</a></li>
+      <li><a onclick="goPage('story')" data-page="story" data-en="Our Story" data-fr="Notre histoire">Our Story</a></li>
+      <li><a onclick="goPage('story','section-project')" data-page="project" data-en="Project 2026" data-fr="Projet 2026">Project 2026</a></li>
+      <li><a onclick="goPage('programs')" data-page="programs" data-en="Programs" data-fr="Programmes">Programs</a></li>
+      <li style="display:none"><a onclick="goPage('gallery')" data-page="gallery" data-en="Gallery" data-fr="Galerie">Gallery</a></li>
+      <li><a onclick="goPage('events')" data-page="events" data-en="Events" data-fr="Événements">Events</a></li>
+      <li><a onclick="goPage('team')" data-page="team" data-en="Team" data-fr="Équipe">Team</a></li>
+      <li><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" data-page="donate" class="nav-cta" data-en="Donate" data-fr="Faire un don">Donate</a></li>
+    </ul>
+    <button class="lang-btn" onclick="toggleLang()" id="langBtn">FR</button>
+  </div>
+</nav>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <div style="background:var(--sky-pale);width:70vw;height:60vh;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+    <p style="font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(41,62,138,0.3);text-align:center;" id="lightboxCaption">Photo placeholder</p>
+  </div>
+</div>
+
+<!-- ══ HOME ══ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-photo">
+      <!-- PHOTO PLACEHOLDER: Replace .hero-photo-img with <img src="hero.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div class="hero-photo-img"><p>Hero photo<br>Community or event<br>Vertical preferred</p></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-h fi">For the<br>youth of<br><em>Haïti.</em></h1>
+      <div class="hero-rule fi"></div>
+      <p class="hero-body fi" data-en="COJEHA has always believed the way to Haiti's betterment is through uplifting its youth. We have faced many different challenges, and we are still here. Growing new roots in the Northeast." data-fr="COJEHA a toujours cru que la voie vers un Haïti meilleur passe par l'épanouissement de sa jeunesse. Nous avons fait face à de nombreux défis, et nous sommes toujours là. Nous plantons de nouvelles racines dans le Nord-Est.">COJEHA has always believed the way to Haiti's betterment is through uplifting its youth. We have faced many different challenges, and we are still here. Growing new roots in the Northeast.</p>
+      <div class="hero-acts fi">
+        <a class="btn-yellow" href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" data-en="Support Our Work" data-fr="Soutenir notre mission">Support Our Work</a>
+        <a class="btn-outline" onclick="goPage('story')" data-en="Learn Our Story" data-fr="Notre histoire">Learn Our Story</a>
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="hs-bar"></div>Scroll</div>
+  </div>
+
+  <div class="stats-band">
+    <div class="stat-item fi"><div class="stat-n">2017</div><div class="stat-l" data-en="Founded" data-fr="Fondée">Founded</div></div>
+    <div class="stat-item fi"><div class="stat-n">14+</div><div class="stat-l" data-en="Communes Reached" data-fr="Communes atteintes">Communes Reached</div></div>
+    <div class="stat-item fi"><div class="stat-n">200+</div><div class="stat-l" data-en="Students Supported 2024–25" data-fr="Élèves soutenus 2024–25">Students Supported 2024–25</div></div>
+    <div class="stat-item fi"><div class="stat-n">6</div><div class="stat-l" data-en="Active Programs" data-fr="Programmes actifs">Active Programs</div></div>
+    <div class="stat-item fi"><div class="stat-n">∞</div><div class="stat-l" data-en="Reason to Keep Going" data-fr="Raison de continuer">Reason to Keep Going</div></div>
+  </div>
+
+
+
+    <!-- STORY STRIP -->
+  <div class="story-band">
+    <div class="story-left fi-l">
+      <div class="story-year-bg">2017</div>
+      <div class="section-kicker" data-en="Who we are" data-fr="Qui nous sommes">Who we are</div>
+      <h2 class="title" style="margin-top:16px;" data-en="Built on<br><em>big belief.</em>" data-fr="Fondés sur<br><em>une grande conviction.</em>">Built on<br><em>big belief.</em></h2>
+      <div class="story-body-text">
+        <p data-en="COJEHA was founded in 2017 by Nancy Michel with a simple conviction: that Haiti's youth deserved more than what the system was giving them." data-fr="COJEHA a été fondé en 2017 par Nancy Michel avec une conviction simple : la jeunesse haïtienne méritait mieux que ce que le système lui offrait.">COJEHA was founded in 2017 by Nancy Michel with a simple conviction: that Haiti's youth deserved more than what the system was giving them.</p>
+        <p data-en="When gang violence forced us out of Port-au-Prince in 2023, we kept paying school fees. The School Grant Program grew by over 80% in 2024 to 2025." data-fr="Lorsque la violence des gangs nous a forcés à quitter Port-au-Prince en 2023, nous avons continué à payer les frais de scolarité. Le Programme de Bourse Scolaire a augmenté de plus de 80% en 2024 à 2025.">When gang violence forced us out of Port-au-Prince in 2023, we kept paying school fees. The School Grant Program grew by over 80% in 2024 to 2025.</p>
+      </div>
+      <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn-yellow" onclick="goPage('story')" data-en="Read the full story" data-fr="Lire toute notre histoire">Read the full story</a>
+      </div>
+    </div>
+    <div class="story-right fi-r">
+      <!-- PHOTO PLACEHOLDER: Replace .story-photo-ph with <img src="story.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div class="story-photo-ph"><p>Story photo goes here<br>Real program or community moment</p></div>
+    </div>
+  </div>
+
+  <div class="tl-strip">
+    <div class="section-inner">
+      <div class="tl-track">
+        <div class="tl-item fi"><div class="tl-dot">17</div><h4 data-en="2017 — Foundation" data-fr="2017 — Fondation">2017 — Foundation</h4><p data-en="First education programs launch." data-fr="Premiers programmes éducatifs lancés.">First education programs launch.</p></div>
+        <div class="tl-item fi"><div class="tl-dot">22</div><h4>2022 — Ann Panse ak Timoun Yo</h4><p data-en="Food, books, clothing, celebrations." data-fr="Nourriture, livres, vêtements, célébrations.">Food, books, clothing, celebrations.</p></div>
+        <div class="tl-item fi"><div class="tl-dot">23</div><h4 data-en="2023 — Agribusiness" data-fr="2023 — Agroentreprise">2023 — Agribusiness</h4><p data-en="Entrepreneurship across 14 communes." data-fr="Entrepreneuriat dans 14 communes.">Entrepreneurship across 14 communes.</p></div>
+        <div class="tl-item fi"><div class="tl-dot">!</div><h4 data-en="2024 — Displacement" data-fr="2024 — Déplacement">2024 — Displacement</h4><p data-en="Forced out. Mission stays." data-fr="Déplacés. La mission reste.">Forced out. Mission stays.</p></div>
+        <div class="tl-item fi"><div class="tl-dot">↑</div><h4 data-en="2025 — Relaunch" data-fr="2025 — Relancement">2025 — Relaunch</h4><p data-en="Northeast restructure. New chapter." data-fr="Restructuration dans le Nord-Est.">Northeast restructure. New chapter.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">COJEHA<span class="footer-dot"></span></div><div class="footer-tag">Centre d'Organisation de la Jeunesse d'Haïti. Serving youth in the Northeast since 2017.</div><div class="footer-slogan">Faites du bien à la nation, faites-vous du bien !</div></div>
+      <div class="fl"><h5 data-en="Navigate" data-fr="Navigation">Navigate</h5><a onclick="goPage('story')" data-en="Our Story" data-fr="Notre histoire">Our Story</a><a onclick="goPage('programs')" data-en="Programs" data-fr="Programmes">Programs</a><a onclick="goPage('gallery')" data-en="Gallery" data-fr="Galerie" style="display:none">Gallery</a><a onclick="goPage('events')" data-en="Events" data-fr="Événements">Events</a><a onclick="goPage('team')" data-en="Team" data-fr="Équipe">Team</a></div>
+      <div class="fl"><h5 data-en="Support" data-fr="Soutenir">Support</h5><a onclick="goPage('donate')" data-en="Donate" data-fr="Faire un don">Donate</a><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">GoFundMe</a><a href="mailto:cojeha2019@gmail.com">cojeha2019@gmail.com</a></div>
+    </div>
+    <div class="footer-btm"><span>© 2026 COJEHA — Centre d'Organisation de la Jeunesse d'Haïti</span><span>cojeha.org</span></div>
+  </footer>
+</div>
+
+<!-- ══ STORY ══ -->
+<div class="page" id="page-story">
+  <div class="back-bar"><button class="back-btn" onclick="historyBack()" data-en="Back" data-fr="Retour">Back</button><span class="breadcrumb" data-en="Our Story" data-fr="Notre histoire">Our Story</span></div>
+
+  <div class="section" style="background:linear-gradient(160deg,var(--sky) 0%,var(--sky-lt) 50%,var(--sky-pale) 100%);padding-bottom:72px;">
+    <div class="section-inner">
+      <div class="section-kicker fi" data-en="Our Story" data-fr="Notre histoire">Our Story</div>
+      <h2 class="title fi" style="color:var(--navy);max-width:700px;margin-top:16px;" data-en="Built on<br><em>big belief.</em>" data-fr="Fondés sur<br><em>une grande conviction.</em>">Built on<br><em>big belief.</em></h2>
+      <p class="fi" style="font-size:16px;color:rgba(13,26,58,0.62);line-height:1.88;max-width:560px;margin-top:22px;" data-en="COJEHA was founded in 2017 by Nancy Michel. We started with one belief: keep children in school, and you change the trajectory of a life." data-fr="COJEHA a été fondé en 2017 par Nancy Michel. Nous avons commencé avec une seule conviction : maintenir les enfants à l'école, c'est changer le cours d'une vie.">COJEHA was founded in 2017 by Nancy Michel. We started with one belief: keep children in school, and you change the trajectory of a life.</p>
+    </div>
+  </div>
+
+  <div class="section" style="background:var(--white);">
+    <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;">
+      <div class="story-body-text fi-l">
+        <p data-en="We started with school fees and the belief that keeping a child in a classroom could change the trajectory of a life. Over the years that belief became programs: agribusiness training, youth sustainability competitions spanning 14 communes, feeding programs and tree-planting ceremonies." data-fr="Nous avons commencé par payer les frais de scolarité avec la conviction que maintenir un enfant en classe pouvait changer le cours de sa vie. Au fil des années, cette conviction est devenue des programmes.">We started with school fees and the belief that keeping a child in a classroom could change the trajectory of a life. Over the years that belief became programs: agribusiness training, youth sustainability competitions spanning 14 communes, feeding programs and tree-planting ceremonies.</p>
+        <p data-en="When gang violence forced us out of our Port-au-Prince headquarters in July 2023, we made one choice: the children stay in school. We supported fewer than 100 children in 2023 to 2024. Through our GoFundMe and the generosity of supporters, we reached over 200 in 2024 to 2025. Our goal is to more than double that for the upcoming school year." data-fr="Lorsque la violence des gangs nous a forcés à quitter nos locaux de Port-au-Prince en juillet 2023, nous avons pris une seule décision : les enfants restent à l'école. Nous avons soutenu moins de 100 enfants en 2023 à 2024. Grâce à notre GoFundMe, nous avons atteint plus de 200 en 2024 à 2025.">When gang violence forced us out of our Port-au-Prince headquarters in July 2023, we made one choice: the children stay in school. We supported fewer than 100 children in 2023 to 2024. Through our GoFundMe and the generosity of supporters, we reached over 200 in 2024 to 2025. Our goal is to more than double that for the upcoming school year.</p>
+        <p data-en="Now we are replanting in the Northeast, on land we own in Fort-Liberté — 25 hectares in the locality of Perard. With a plan bigger than anything we have done before, because the need has only grown." data-fr="Nous nous réimplantons maintenant dans le Nord-Est, sur un terrain qui nous appartient à Fort-Liberté, 25 hectares dans la localité de Perard. Avec un plan plus ambitieux que tout ce que nous avons fait auparavant, parce que le besoin n'a fait qu'augmenter.">Now we are replanting in the Northeast, on land we own in Fort-Liberté, 25 hectares in the locality of Perard. With a plan bigger than anything we have done before, because the need has only grown.</p>
+      </div>
+      <div class="fi-r" style="border-radius:6px;min-height:400px;overflow:hidden;background:linear-gradient(150deg,var(--sky),var(--sky-lt));display:flex;align-items:center;justify-content:center;">
+        <!-- PHOTO PLACEHOLDER: Replace with <img src="story-full.jpg" style="width:100%;height:400px;object-fit:cover;"> -->
+        <p style="font-family:'Glacial Indifference',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(41,62,138,0.25);text-align:center;padding:32px;">Photo placeholder<br>Program or community moment</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION SECTION -->
+  <div class="mission-section">
+    <div class="mission-inner">
+      <div>
+        <div class="mission-label" data-en="Our Mission" data-fr="Notre Mission">Our Mission</div>
+        <h2 class="mission-title fi-l" data-en="With youth,<br>at every<br><em>stage.</em>" data-fr="Avec la jeunesse,<br>à chaque<br><em>étape.</em>">With youth,<br>at every<br><em>stage.</em></h2>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.8;margin-top:20px;" data-en="We don't only show up when things are going well. COJEHA is there when a family cannot afford school fees, and when a young person is incarcerated and needs a meal. We cover the full arc." data-fr="Nous ne sommes pas seulement présents quand les choses vont bien. COJEHA est là quand une famille ne peut pas payer les frais de scolarité, et quand un jeune est incarcéré et a besoin d'un repas. Nous couvrons tout le parcours.">We don't only show up when things are going well. COJEHA is there when a family cannot afford school fees, and when a young person is incarcerated and needs a meal. We cover the full arc.</p>
+      </div>
+      <div class="mission-pillars fi-r">
+        <div class="mission-pillar">
+          
+          <div class="pillar-text">
+            <h4 data-en="Education First" data-fr="L'éducation avant tout">Education First</h4>
+            <p data-en="We pay school fees so that financial hardship is never the reason a child stops learning. Education is the foundation everything else is built on." data-fr="Nous payons les frais de scolarité pour que la précarité financière ne soit jamais la raison pour laquelle un enfant arrête d'apprendre. L'éducation est le fondement sur lequel tout le reste est construit.">We pay school fees so that financial hardship is never the reason a child stops learning. Education is the foundation everything else is built on.</p>
+          </div>
+        </div>
+        <div class="mission-pillar">
+          
+          <div class="pillar-text">
+            <h4 data-en="Health Where It Matters" data-fr="La santé là où ça compte">Health Where It Matters</h4>
+            <p data-en="Mobile health clinics bring free care directly to isolated communities and prisons. We believe access to healthcare should not depend on geography or circumstance." data-fr="Les cliniques mobiles apportent des soins gratuits directement dans les communautés isolées et les prisons. Nous croyons que l'accès aux soins ne doit pas dépendre de la géographie ou des circonstances.">Mobile health clinics bring free care directly to isolated communities and prisons. We believe access to healthcare should not depend on geography or circumstance.</p>
+          </div>
+        </div>
+        <div class="mission-pillar">
+          
+          <div class="pillar-text">
+            <h4 data-en="Recognition Builds Futures" data-fr="La reconnaissance construit l'avenir">Recognition Builds Futures</h4>
+            <p data-en="When youth succeed, we celebrate them. Our investment ceremonies exist because excellence deserves to be seen, and community presence is its own form of support." data-fr="Quand la jeunesse réussit, nous la célébrons. Nos cérémonies d'investissement existent parce que l'excellence mérite d'être vue, et la présence communautaire est en elle-même une forme de soutien.">When youth succeed, we celebrate them. Our investment ceremonies exist because excellence deserves to be seen, and community presence is its own form of support.</p>
+          </div>
+        </div>
+        <div class="mission-pillar">
+          
+          <div class="pillar-text">
+            <h4 data-en="Rooted in Community" data-fr="Ancré dans la communauté">Rooted in Community</h4>
+            <p data-en="From afterschool programs to a new community center in the Northeast, we are building infrastructure that stays. The goal is never a single intervention. It is a generation lifted." data-fr="Des programmes parascolaires au nouveau centre communautaire dans le Nord-Est, nous construisons une infrastructure qui dure. L'objectif n'est jamais une seule intervention. C'est une génération élevée.">From afterschool programs to a new community center in the Northeast, we are building infrastructure that stays. The goal is never a single intervention. It is a generation lifted.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="tl-strip">
+    <div class="section-inner">
+      <div class="section-kicker" style="margin-bottom:32px;" data-en="Timeline" data-fr="Chronologie">Timeline</div>
+      <div class="tl-track">
+        <div class="tl-item fi"><div class="tl-dot">17</div><h4 data-en="2017 — Foundation" data-fr="2017 — Fondation">2017 — Foundation</h4><p data-en="Nancy Michel founds COJEHA. First programs in Trou-du-Nord." data-fr="Nancy Michel fonde COJEHA. Premiers programmes à Trou-du-Nord.">Nancy Michel founds COJEHA. First programs in Trou-du-Nord.</p></div>
+        <div class="tl-item fi"><div class="tl-dot">22</div><h4>2022 — Ann Panse ak Timoun Yo</h4><p data-en="Flagship care program. Second edition in Capotille, March 2022." data-fr="Programme phare. Deuxième édition à Capotille, mars 2022.">Flagship care program. Second edition in Capotille, March 2022.</p></div>
+        <div class="tl-item fi"><div class="tl-dot">23</div><h4>2023 — Agribusiness</h4><p data-en="Farm management across 14 Northeast communes." data-fr="Gestion agricole dans 14 communes du Nord-Est.">Farm management across 14 Northeast communes.</p></div>
+        <div class="tl-item fi"><div class="tl-dot">!</div><h4 data-en="2024 — Displacement" data-fr="2024 — Déplacement">2024 — Displacement</h4><p data-en="Gang violence forces COJEHA from Port-au-Prince. School fees keep being paid." data-fr="La violence des gangs force COJEHA à quitter Port-au-Prince. Les frais de scolarité sont maintenus.">Gang violence forces COJEHA from Port-au-Prince. School fees keep being paid.</p></div>
+        <div class="tl-item fi"><div class="tl-dot">↑</div><h4 data-en="2025 — Relaunch" data-fr="2025 — Relancement">2025 — Relaunch</h4><p data-en="Restructured in the Northeast. Official relaunch with partner schools." data-fr="Restructuré dans le Nord-Est. Relancement officiel avec les écoles partenaires.">Restructured in the Northeast. Official relaunch with partner schools.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2026 HORIZONTAL CARDS -->
+  <div class="section" id="section-project" style="background:linear-gradient(160deg,var(--navy) 0%,#1e2f6e 60%,#1a2a5e 100%);padding-top:92px;padding-bottom:92px;">
+    <div class="section-inner">
+      <div class="section-kicker fi" style="background:var(--yellow);color:var(--navy);" data-en="Project 2026" data-fr="Projet 2026">Project 2026</div>
+      <h2 class="title fi" style="color:#fff;margin-top:16px;margin-bottom:8px;" data-en="A new <em style='color:var(--sky-lt);'>chapter.</em>" data-fr="Un nouveau <em style='color:var(--sky-lt);'>chapitre.</em>">A new <em style="color:var(--sky-lt);">chapter.</em></h2>
+      <p class="fi" style="font-size:15px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.85;" data-en="We are not starting over. We are building on everything we have learned, on land we own, in the Northeast." data-fr="Nous ne recommençons pas de zéro. Nous bâtissons sur tout ce que nous avons appris, sur un terrain qui nous appartient, dans le Nord-Est.">We are not starting over. We are building on everything we have learned, on land we own, in the Northeast.</p>
+
+      <div class="horiz-timeline fi">
+        <div class="horiz-chapter">
+          <div class="horiz-top">
+            <div class="horiz-circle">17</div>
+            <div><div class="horiz-year-lbl" data-en="The original plan" data-fr="Le plan original">The original plan</div><div class="horiz-year-num">2017–2024</div></div>
+          </div>
+          <div class="horiz-body">
+            <h3 data-en="The original vision." data-fr="La vision originale.">The original vision.</h3>
+            <p data-en="A permanent campus, fish farming on the lake, agribusiness revenue sustaining education and a Port-au-Prince headquarters anchoring it all. This was the plan we built toward for seven years." data-fr="Un campus permanent, de la pisciculture sur le lac, des revenus agribusiness soutenant l'éducation et un siège à Port-au-Prince. C'était le plan vers lequel nous avons travaillé pendant sept ans.">A permanent campus, fish farming on the lake, agribusiness revenue sustaining education and a Port-au-Prince headquarters anchoring it all. This was the plan we built toward for seven years.</p>
+            <div class="horiz-bullets">
+              <div class="horiz-bullet" data-en="Permanent campus on 25 hectares in Fort-Liberté" data-fr="Campus permanent sur 25 hectares à Fort-Liberté">Permanent campus on 25 hectares in Fort-Liberté</div>
+              <div class="horiz-bullet" data-en="Fish farming lake and agricultural revenue" data-fr="Pisciculture et revenus agricoles">Fish farming lake and agricultural revenue</div>
+              <div class="horiz-bullet" data-en="Agribusiness training across 14 Northeast communes" data-fr="Formation dans 14 communes du Nord-Est">Agribusiness training across 14 Northeast communes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="horiz-chapter">
+          <div class="horiz-top">
+            <div class="horiz-circle">!</div>
+            <div><div class="horiz-year-lbl" data-en="When the path changed" data-fr="Quand le chemin a changé">When the path changed</div><div class="horiz-year-num">2023–2024</div></div>
+          </div>
+          <div class="horiz-body">
+            <h3 data-en="Forced to adapt." data-fr="Forcés de nous adapter.">Forced to adapt.</h3>
+            <p data-en="Gang violence displaced our staff from Port-au-Prince in July 2023. We stripped back to one non-negotiable decision: the children stay in school. We supported fewer than 100 students that year." data-fr="La violence des gangs a déplacé notre personnel de Port-au-Prince en juillet 2023. Nous avons réduit tout à une décision non négociable : les enfants restent à l'école.">Gang violence displaced our staff from Port-au-Prince in July 2023. We stripped back to one non-negotiable decision: the children stay in school. We supported fewer than 100 students that year.</p>
+            <div class="horiz-bullets">
+              <div class="horiz-bullet" data-en="Headquarters lost to gang occupation" data-fr="Siège perdu à cause des gangs">Headquarters lost to gang occupation</div>
+              <div class="horiz-bullet" data-en="Fewer than 100 students supported in 2023 to 2024" data-fr="Moins de 100 élèves soutenus en 2023 à 2024">Fewer than 100 students supported in 2023 to 2024</div>
+              <div class="horiz-bullet" data-en="School Grant Program maintained throughout" data-fr="Programme de bourse maintenu tout au long">School Grant Program maintained throughout</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="horiz-chapter active-ch">
+          <div class="horiz-top">
+            <div class="horiz-circle">↑</div>
+            <div><div class="horiz-year-lbl" data-en="Building now" data-fr="On construit maintenant">Building now</div><div class="horiz-year-num" data-en="2025 onward" data-fr="2025 et après">2025 onward</div></div>
+          </div>
+          <div class="horiz-body">
+            <h3 data-en="Building forward." data-fr="Construire vers l'avenir.">Building forward.</h3>
+            <p data-en="We reached over 200 students in 2024 to 2025, more than double the year before. Our goal is to double again. We are building a multifunctional community center in Fort-Liberté that will serve as COJEHA's permanent Northeast headquarters, housing a community center, classroom and commercial kitchen, all on land we own." data-fr="Nous avons atteint plus de 200 élèves en 2024 à 2025, plus du double de l'année précédente. Notre objectif est de doubler à nouveau. Nous construisons un centre communautaire multifonctionnel à Fort-Liberté.">We reached over 200 students in 2024 to 2025, more than double the year before. Our goal is to double again. We are building a multifunctional community center in Fort-Liberté that will serve as COJEHA's permanent Northeast headquarters, housing a community center, classroom and commercial kitchen, all on land we own.</p>
+            <div class="horiz-bullets">
+              <div class="horiz-bullet" data-en="200 plus students supported in 2024 to 2025" data-fr="Plus de 200 élèves soutenus en 2024 à 2025">200 plus students supported in 2024 to 2025</div>
+              <div class="horiz-bullet" data-en="Mobile health clinics reaching isolated communities and prisons" data-fr="Cliniques mobiles atteignant les communautés isolées et les prisons">Mobile health clinics reaching isolated communities and prisons</div>
+              <div class="horiz-bullet" data-en="Youth investment ceremonies for excellence and community enrichment" data-fr="Cérémonies d'investissement jeunesse pour l'excellence et l'enrichissement communautaire">Youth investment ceremonies for excellence and community enrichment</div>
+              <div class="horiz-bullet" data-en="Local government partnerships to sustain programs" data-fr="Partenariats avec les gouvernements locaux">Local government partnerships to sustain programs</div>
+              <div class="horiz-bullet" data-en="Multifunctional community center under development in Fort-Liberté" data-fr="Centre communautaire multifonctionnel en cours à Fort-Liberté">Multifunctional community center under development in Fort-Liberté</div>
+            </div>
+            <div style="margin-top:22px;">
+              <a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" class="btn-yellow" data-en="Support Project 2026" data-fr="Soutenir le Projet 2026">Support Project 2026</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">COJEHA<span class="footer-dot"></span></div><div class="footer-tag">Centre d'Organisation de la Jeunesse d'Haïti.</div><div class="footer-slogan">Faites du bien à la nation, faites-vous du bien !</div></div>
+      <div class="fl"><h5 data-en="Navigate" data-fr="Navigation">Navigate</h5><a onclick="goPage('home')" data-en="Home" data-fr="Accueil">Home</a><a onclick="goPage('programs')" data-en="Programs" data-fr="Programmes">Programs</a><a onclick="goPage('gallery')" data-en="Gallery" data-fr="Galerie" style="display:none">Gallery</a><a onclick="goPage('events')" data-en="Events" data-fr="Événements">Events</a><a onclick="goPage('team')" data-en="Team" data-fr="Équipe">Team</a></div>
+      <div class="fl"><h5 data-en="Support" data-fr="Soutenir">Support</h5><a onclick="goPage('donate')" data-en="Donate" data-fr="Faire un don">Donate</a><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">GoFundMe</a></div>
+    </div>
+    <div class="footer-btm"><span>© 2026 COJEHA</span><span>cojeha.org</span></div>
+  </footer>
+</div>
+
+<!-- ══ PROGRAMS ══ -->
+<div class="page" id="page-programs">
+  <div class="back-bar"><button class="back-btn" onclick="historyBack()" data-en="Back" data-fr="Retour">Back</button><span class="breadcrumb" data-en="Programs" data-fr="Programmes">Programs</span></div>
+  <div class="section" style="background:linear-gradient(160deg,var(--sky) 0%,var(--sky-lt) 50%,#f0f8ff 100%);padding-bottom:64px;">
+    <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;">
+      <div><div class="section-kicker fi" data-en="What we do" data-fr="Ce que nous faisons">What we do</div><h2 class="title fi" style="color:var(--navy);margin-top:16px;" data-en="Our <em>programs.</em>" data-fr="Nos <em>programmes.</em>">Our <em>programs.</em></h2></div>
+      <p class="fi" style="font-size:15px;line-height:1.88;color:rgba(13,26,58,0.6);align-self:end;" data-en="Our programs are built around one question: what does a child in the Northeast actually need to stay in school, stay healthy, and have a future?" data-fr="Nos programmes sont construits autour d'une seule question : de quoi un enfant du Nord-Est a-t-il réellement besoin pour rester à l'école, rester en bonne santé et avoir un avenir ?">Our programs are built around one question: what does a child in the Northeast actually need to stay in school, stay healthy, and have a future?</p>
+    </div>
+  </div>
+  <div style="background:var(--white);">
+    <div class="prog-list">
+
+      <div class="prog-row fi" id="prog1">
+        <div class="prog-header-row" onclick="toggleProg('prog1')">
+          <div class="prog-num">01</div>
+          <div class="prog-title-area"><h4 data-en="School Grant Program" data-fr="Programme de Bourse Scolaire">School Grant Program</h4><p class="prog-subtitle" data-en="Covering school fees so no child is turned away" data-fr="Couvrir les frais de scolarité pour qu'aucun enfant ne soit exclu">Covering school fees so no child is turned away</p></div>
+          <div class="prog-meta-col"><span class="prog-badge b-a" data-en="Active" data-fr="Actif">Active</span><span class="prog-toggle">+</span></div>
+        </div>
+        <div class="prog-expand" id="prog1-expand">
+          <div class="prog-expand-inner">
+            <div class="prog-photos" style="display:none">
+              <!-- PHOTO PLACEHOLDERS -->
+              <div class="prog-photo">School photo 1<br>Class or ceremony</div>
+              <div class="prog-photo">School photo 2<br>Students receiving grants</div>
+              <div class="prog-photo">School photo 3<br>Recognition event</div>
+              <div class="prog-photo">School photo 4<br>Community gathering</div>
+            </div>
+            <p class="prog-detail-text" data-en="We cover school fees for students across the Northeast, ensuring financial hardship is never a reason to leave the classroom. This is our most consistent and most direct intervention, and the one we maintained through every disruption. We supported fewer than 100 children in 2023 to 2024. Through our GoFundMe, we reached over 200 in 2024 to 2025. Our goal is to more than double that for the upcoming school year." data-fr="Nous couvrons les frais de scolarité des élèves du Nord-Est. Nous avons soutenu moins de 100 enfants en 2023 à 2024. Grâce à notre GoFundMe, nous avons atteint plus de 200 en 2024 à 2025. Notre objectif est de plus que doubler ce chiffre.">We cover school fees for students across the Northeast, ensuring financial hardship is never a reason to leave the classroom. This is our most consistent and most direct intervention, and the one we maintained through every disruption. We supported fewer than 100 children in 2023 to 2024. Through our GoFundMe, we reached over 200 in 2024 to 2025. Our goal is to more than double that for the upcoming school year.</p>
+            <div class="prog-actions"><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" class="btn-yellow" data-en="Donate to this program" data-fr="Soutenir ce programme">Donate to this program</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-row fi" id="prog2">
+        <div class="prog-header-row" onclick="toggleProg('prog2')">
+          <div class="prog-num">02</div>
+          <div class="prog-title-area"><h4 data-en="Mobile Health Clinics" data-fr="Cliniques Mobiles de Santé">Mobile Health Clinics</h4><p class="prog-subtitle" data-en="Healthcare where the system does not reach" data-fr="Soins de santé là où le système n'arrive pas">Healthcare where the system does not reach</p></div>
+          <div class="prog-meta-col"><span class="prog-badge b-p" data-en="In Planning" data-fr="En préparation">In Planning</span><span class="prog-toggle">+</span></div>
+        </div>
+        <div class="prog-expand" id="prog2-expand">
+          <div class="prog-expand-inner">
+            <div class="prog-photos" style="display:none">
+              <!-- PHOTO PLACEHOLDERS -->
+              <div class="prog-photo">Clinic photo 1<br>Mobile unit</div>
+              <div class="prog-photo">Clinic photo 2<br>Community outreach</div>
+              <div class="prog-photo">Clinic photo 3<br>Rural area visit</div>
+            </div>
+            <p class="prog-detail-text" data-en="We are building partnerships to reach more youth through mobile health clinics, bringing free consultations and medications directly to geographically isolated communities and prisons. Maintaining these partnerships requires our active presence: providing meals, supporting initiatives, and showing up consistently. Without funding, we cannot fulfill our side of these partnerships." data-fr="Nous construisons des partenariats pour atteindre davantage de jeunes via des cliniques mobiles, apportant consultations gratuites et médicaments dans les communautés isolées et les prisons. Maintenir ces partenariats exige notre présence active.">We are building partnerships to reach more youth through mobile health clinics, bringing free consultations and medications directly to geographically isolated communities and prisons. Maintaining these partnerships requires our active presence: providing meals, supporting initiatives, and showing up consistently. Without funding, we cannot fulfill our side of these partnerships.</p>
+            <div class="prog-actions"><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" class="btn-yellow" data-en="Help fund mobile clinics" data-fr="Financer les cliniques mobiles">Help fund mobile clinics</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-row fi" id="prog3">
+        <div class="prog-header-row" onclick="toggleProg('prog3')">
+          <div class="prog-num">03</div>
+          <div class="prog-title-area"><h4 data-en="Youth Investment Ceremonies" data-fr="Cérémonies d'Investissement Jeunesse">Youth Investment Ceremonies</h4><p class="prog-subtitle" data-en="Recognizing excellence and building community" data-fr="Reconnaître l'excellence et construire la communauté">Recognizing excellence and building community</p></div>
+          <div class="prog-meta-col"><span class="prog-badge b-a" data-en="Active" data-fr="Actif">Active</span><span class="prog-toggle">+</span></div>
+        </div>
+        <div class="prog-expand" id="prog3-expand">
+          <div class="prog-expand-inner">
+            <div class="prog-photos" style="display:none">
+              <!-- PHOTO PLACEHOLDERS -->
+              <div class="prog-photo">Ceremony photo 1<br>Award moment</div>
+              <div class="prog-photo">Ceremony photo 2<br>Students gathering</div>
+              <div class="prog-photo">Ceremony photo 3<br>Prize distribution</div>
+              <div class="prog-photo">Ceremony photo 4<br>Community celebration</div>
+            </div>
+            <p class="prog-detail-text" data-en="These ceremonies exist to celebrate excellence, foster peer-to-peer connections, and enrich the communities we serve. We bring students, parents, school directors, and local partners together. We feed them, hand out prizes, and remind every young person in that room that their progress matters and that their community is watching with pride." data-fr="Ces cérémonies existent pour célébrer l'excellence, favoriser les liens entre pairs et enrichir les communautés. Nous réunissons élèves, parents, directeurs d'école et partenaires locaux. Nous les nourrissons, distribuons des prix et rappelons à chaque jeune présent que ses progrès comptent.">These ceremonies exist to celebrate excellence, foster peer-to-peer connections, and enrich the communities we serve. We bring students, parents, school directors, and local partners together. We feed them, hand out prizes, and remind every young person in that room that their progress matters and that their community is watching with pride.</p>
+            <div class="prog-actions"><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" class="btn-yellow" data-en="Support a ceremony" data-fr="Soutenir une cérémonie">Support a ceremony</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-row fi" id="prog4">
+        <div class="prog-header-row" onclick="toggleProg('prog4')">
+          <div class="prog-num">04</div>
+          <div class="prog-title-area"><h4 data-en="Agricultural Entrepreneurship Program" data-fr="Programme d'Entrepreneuriat Agricole">Agricultural Entrepreneurship Program</h4><p class="prog-subtitle" data-en="Rooted in Haiti's land, returning soon" data-fr="Ancré dans la terre haïtienne, bientôt de retour">Rooted in Haiti's land, returning soon</p></div>
+          <div class="prog-meta-col"><span class="prog-badge b-x" data-en="Paused" data-fr="En pause">Paused</span><span class="prog-toggle">+</span></div>
+        </div>
+        <div class="prog-expand" id="prog4-expand">
+          <div class="prog-expand-inner">
+            <div class="prog-photos" style="display:none">
+              <!-- PHOTO PLACEHOLDERS -->
+              <div class="prog-photo">Farm photo 1<br>Training session</div>
+              <div class="prog-photo">Farm photo 2<br>Field work</div>
+              <div class="prog-photo">Farm photo 3<br>Youth participants</div>
+            </div>
+            <p class="prog-detail-text" data-en="Our foundational farm management and entrepreneurship program reached 14 communes at its peak. Temporarily paused due to displacement and funding constraints. Revival is part of the long-term plan. The knowledge, the relationships and the land are still there." data-fr="Notre programme fondateur a atteint 14 communes à son apogée. Temporairement suspendu en raison du déplacement et des contraintes financières. Le renouveau fait partie du plan à long terme.">Our foundational farm management and entrepreneurship program reached 14 communes at its peak. Temporarily paused due to displacement and funding constraints. Revival is part of the long-term plan. The knowledge, the relationships and the land are still there.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-row fi" id="prog5">
+        <div class="prog-header-row" onclick="toggleProg('prog5')">
+          <div class="prog-num">05</div>
+          <div class="prog-title-area"><h4 data-en="Youth Sustainability Contest" data-fr="Concours Jeunesse Durabilité">Youth Sustainability Contest</h4><p class="prog-subtitle" data-en="Real stakes, real futures — returning 2026" data-fr="De vrais enjeux, de vrais avenirs — retour en 2026">Real stakes, real futures — returning 2026</p></div>
+          <div class="prog-meta-col"><span class="prog-badge b-p" data-en="Returning 2026" data-fr="Retour en 2026">Returning 2026</span><span class="prog-toggle">+</span></div>
+        </div>
+        <div class="prog-expand" id="prog5-expand">
+          <div class="prog-expand-inner">
+            <div class="prog-photos" style="display:none">
+              <!-- PHOTO PLACEHOLDERS -->
+              <div class="prog-photo">Contest photo 1<br>Presentation day</div>
+              <div class="prog-photo">Contest photo 2<br>Judges panel</div>
+              <div class="prog-photo">Contest photo 3<br>Winners ceremony</div>
+            </div>
+            <p class="prog-detail-text" data-en="Annual competition where students across the Northeast write and present their vision for sustainable development in their communities. Real judges, real stakes, real futures. First held across 14 communes. Returning in 2026." data-fr="Concours annuel où les élèves du Nord-Est présentent leur vision du développement durable. De vrais juges, de vrais enjeux. Retour en 2026.">Annual competition where students across the Northeast write and present their vision for sustainable development in their communities. Real judges, real stakes, real futures. First held across 14 communes. Returning in 2026.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-row fi" id="prog6">
+        <div class="prog-header-row" onclick="toggleProg('prog6')">
+          <div class="prog-num">06</div>
+          <div class="prog-title-area"><h4 data-en="Community and Institutional Partnerships" data-fr="Partenariats Communautaires et Institutionnels">Community and Institutional Partnerships</h4><p class="prog-subtitle" data-en="Building relationships that outlast any funding cycle" data-fr="Construire des relations durables">Building relationships that outlast any funding cycle</p></div>
+          <div class="prog-meta-col"><span class="prog-badge b-a" data-en="Active" data-fr="Actif">Active</span><span class="prog-toggle">+</span></div>
+        </div>
+        <div class="prog-expand" id="prog6-expand">
+          <div class="prog-expand-inner">
+            <div class="prog-photos" style="display:none">
+              <!-- PHOTO PLACEHOLDERS -->
+              <div class="prog-photo">Partnership photo 1<br>Community meeting</div>
+              <div class="prog-photo">Partnership photo 2<br>School directors</div>
+              <div class="prog-photo">Partnership photo 3<br>Local government</div>
+            </div>
+            <p class="prog-detail-text" data-en="We are building sustained relationships with local schools, health actors, and local government institutions. We are building partnerships to reach more youth through mobile health clinics and feeding programs in prisons. To maintain these partnerships, we need to show up with resources. Every contribution helps us keep our commitments to the communities that are counting on us." data-fr="Nous construisons des relations durables avec les écoles locales, les acteurs de santé et les institutions gouvernementales locales. Chaque contribution nous aide à tenir nos engagements envers les communautés qui comptent sur nous.">We are building sustained relationships with local schools, health actors, and local government institutions. We are building partnerships to reach more youth through mobile health clinics and feeding programs in prisons. To maintain these partnerships, we need to show up with resources. Every contribution helps us keep our commitments to the communities that are counting on us.</p>
+            <div class="prog-actions"><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" class="btn-yellow" data-en="Help us show up" data-fr="Aidez-nous à être présents">Help us show up</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">COJEHA<span class="footer-dot"></span></div><div class="footer-tag">Centre d'Organisation de la Jeunesse d'Haïti.</div><div class="footer-slogan">Faites du bien à la nation, faites-vous du bien !</div></div>
+      <div class="fl"><h5 data-en="Navigate" data-fr="Navigation">Navigate</h5><a onclick="goPage('home')" data-en="Home" data-fr="Accueil">Home</a><a onclick="goPage('story')" data-en="Our Story" data-fr="Notre histoire">Our Story</a><a onclick="goPage('gallery')" data-en="Gallery" data-fr="Galerie" style="display:none">Gallery</a><a onclick="goPage('events')" data-en="Events" data-fr="Événements">Events</a><a onclick="goPage('team')" data-en="Team" data-fr="Équipe">Team</a></div>
+      <div class="fl"><h5 data-en="Support" data-fr="Soutenir">Support</h5><a onclick="goPage('donate')" data-en="Donate" data-fr="Faire un don">Donate</a><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">GoFundMe</a></div>
+    </div>
+    <div class="footer-btm"><span>© 2026 COJEHA</span><span>cojeha.org</span></div>
+  </footer>
+</div>
+
+<!-- ══ GALLERY ══ -->
+<div class="page" id="page-gallery">
+  <div class="back-bar"><button class="back-btn" onclick="historyBack()" data-en="Back" data-fr="Retour">Back</button><span class="breadcrumb" data-en="Gallery" data-fr="Galerie">Gallery</span></div>
+  <div class="section" style="background:linear-gradient(160deg,var(--sky) 0%,var(--sky-lt) 50%,#f0f8ff 100%);padding-bottom:56px;">
+    <div class="section-inner">
+      <div class="section-kicker fi" data-en="On the ground" data-fr="Sur le terrain">On the ground</div>
+      <h2 class="title fi" style="color:var(--navy);margin-top:16px;" data-en="What we do,<br><em>in pictures.</em>" data-fr="Ce que nous faisons,<br><em>en images.</em>">What we do,<br><em>in pictures.</em></h2>
+      <p class="fi" style="font-size:15px;color:rgba(13,26,58,0.58);line-height:1.85;max-width:520px;margin-top:18px;" data-en="Photos from our programs, ceremonies, land, and community events across the Northeast. Click any album to expand." data-fr="Photos de nos programmes, cérémonies, terrain et événements dans le Nord-Est. Cliquez sur un album pour l'agrandir.">Photos from our programs, ceremonies, land, and community events across the Northeast. Click any album to expand.</p>
+    </div>
+  </div>
+  <div class="section" style="background:var(--white);padding-top:56px;">
+    <div class="section-inner">
+      <div class="album-grid fi">
+
+        <div class="album" id="album1">
+          <div class="album-cover" onclick="toggleAlbum('album1')">
+            <!-- PHOTO PLACEHOLDER: Replace .album-cover-ph with <img src="cover.jpg" style="width:100%;height:190px;object-fit:cover;"> -->
+            <div class="album-cover-ph c1" data-en="Agricultural Entrepreneurship<br>Cover photo placeholder" data-fr="Entrepreneuriat Agricole<br>Photo de couverture">Agricultural Entrepreneurship<br>Cover photo placeholder</div>
+            <button class="album-expand-btn" data-en="View photos" data-fr="Voir les photos">View photos</button>
+          </div>
+          <div class="album-info"><h4 data-en="Agricultural Entrepreneurship" data-fr="Entrepreneuriat Agricole">Agricultural Entrepreneurship</h4><p data-en="Farm management training across 14 Northeast communes, 2023" data-fr="Formation agricole dans 14 communes du Nord-Est, 2023">Farm management training across 14 Northeast communes, 2023</p><div class="album-count" data-en="8 photos" data-fr="8 photos">8 photos</div>
+          <div class="album-strip">
+            <!-- PHOTO PLACEHOLDERS: Replace each with <img src="photo.jpg" style="width:110px;height:72px;object-fit:cover;border-radius:3px;cursor:pointer;" onclick="openLightbox('Caption here')"> -->
+            <div class="album-strip-ph" onclick="openLightbox('Agricultural Entrepreneurship, photo 1')">Photo 1</div>
+            <div class="album-strip-ph" onclick="openLightbox('Agricultural Entrepreneurship, photo 2')">Photo 2</div>
+            <div class="album-strip-ph" onclick="openLightbox('Agricultural Entrepreneurship, photo 3')">Photo 3</div>
+            <div class="album-strip-ph" onclick="openLightbox('Agricultural Entrepreneurship, photo 4')">Photo 4</div>
+            <div class="album-strip-ph" onclick="openLightbox('Agricultural Entrepreneurship, photo 5')">Photo 5</div>
+            <div class="album-strip-ph" onclick="openLightbox('Agricultural Entrepreneurship, photo 6')">Photo 6</div>
+            <div class="album-strip-ph" onclick="openLightbox('Agricultural Entrepreneurship, photo 7')">Photo 7</div>
+            <div class="album-strip-ph" onclick="openLightbox('Agricultural Entrepreneurship, photo 8')">Photo 8</div>
+          </div></div>
+        </div>
+
+        <div class="album" id="album2">
+          <div class="album-cover" onclick="toggleAlbum('album2')">
+            <div class="album-cover-ph c2" data-en="Youth Ceremonies<br>Cover photo placeholder" data-fr="Cérémonies Jeunesse<br>Photo de couverture">Youth Ceremonies<br>Cover photo placeholder</div>
+            <button class="album-expand-btn" data-en="View photos" data-fr="Voir les photos">View photos</button>
+          </div>
+          <div class="album-info"><h4 data-en="Youth Investment Ceremonies" data-fr="Cérémonies d'Investissement Jeunesse">Youth Investment Ceremonies</h4><p data-en="Recognition, prize distribution, and community celebration" data-fr="Reconnaissance, prix et célébration communautaire">Recognition, prize distribution, and community celebration</p><div class="album-count" data-en="12 photos" data-fr="12 photos">12 photos</div>
+          <div class="album-strip">
+            <div class="album-strip-ph" onclick="openLightbox('Youth Ceremonies, photo 1')">Photo 1</div>
+            <div class="album-strip-ph" onclick="openLightbox('Youth Ceremonies, photo 2')">Photo 2</div>
+            <div class="album-strip-ph" onclick="openLightbox('Youth Ceremonies, photo 3')">Photo 3</div>
+            <div class="album-strip-ph" onclick="openLightbox('Youth Ceremonies, photo 4')">Photo 4</div>
+            <div class="album-strip-ph" onclick="openLightbox('Youth Ceremonies, photo 5')">Photo 5</div>
+            <div class="album-strip-ph" onclick="openLightbox('Youth Ceremonies, photo 6')">Photo 6</div>
+          </div></div>
+        </div>
+
+        <div class="album" id="album3">
+          <div class="album-cover" onclick="toggleAlbum('album3')">
+            <div class="album-cover-ph c3">Ann Panse ak Timoun Yo<br>Cover photo placeholder</div>
+            <button class="album-expand-btn" data-en="View photos" data-fr="Voir les photos">View photos</button>
+          </div>
+          <div class="album-info"><h4>Ann Panse ak Timoun Yo</h4><p data-en="Caring for Our Children, food, books, clothing, 2022" data-fr="Prendre soin de nos enfants, nourriture, livres, vêtements, 2022">Caring for Our Children, food, books, clothing, 2022</p><div class="album-count" data-en="10 photos" data-fr="10 photos">10 photos</div>
+          <div class="album-strip">
+            <div class="album-strip-ph" onclick="openLightbox('Ann Panse ak Timoun Yo, photo 1')">Photo 1</div>
+            <div class="album-strip-ph" onclick="openLightbox('Ann Panse ak Timoun Yo, photo 2')">Photo 2</div>
+            <div class="album-strip-ph" onclick="openLightbox('Ann Panse ak Timoun Yo, photo 3')">Photo 3</div>
+            <div class="album-strip-ph" onclick="openLightbox('Ann Panse ak Timoun Yo, photo 4')">Photo 4</div>
+            <div class="album-strip-ph" onclick="openLightbox('Ann Panse ak Timoun Yo, photo 5')">Photo 5</div>
+          </div></div>
+        </div>
+
+        <div class="album" id="album4">
+          <div class="album-cover" onclick="toggleAlbum('album4')">
+            <div class="album-cover-ph c4" data-en="Our Land, Fort-Liberté<br>Cover photo placeholder" data-fr="Notre terrain, Fort-Liberté<br>Photo de couverture">Our Land, Fort-Liberté<br>Cover photo placeholder</div>
+            <button class="album-expand-btn" data-en="View photos" data-fr="Voir les photos">View photos</button>
+          </div>
+          <div class="album-info"><h4 data-en="The Land, Fort-Liberté" data-fr="Le Terrain, Fort-Liberté">The Land, Fort-Liberté</h4><p data-en="25 hectares in Perard, the future site of COJEHA's community center" data-fr="25 hectares à Perard, futur site du centre communautaire de COJEHA">25 hectares in Perard, the future site of COJEHA's community center</p><div class="album-count" data-en="6 photos" data-fr="6 photos">6 photos</div>
+          <div class="album-strip">
+            <div class="album-strip-ph" onclick="openLightbox('Fort-Liberté Land, photo 1')">Photo 1</div>
+            <div class="album-strip-ph" onclick="openLightbox('Fort-Liberté Land, photo 2')">Photo 2</div>
+            <div class="album-strip-ph" onclick="openLightbox('Fort-Liberté Land, photo 3')">Photo 3</div>
+            <div class="album-strip-ph" onclick="openLightbox('Fort-Liberté Land, photo 4')">Photo 4</div>
+            <div class="album-strip-ph" onclick="openLightbox('Fort-Liberté Land, photo 5')">Photo 5</div>
+            <div class="album-strip-ph" onclick="openLightbox('Fort-Liberté Land, photo 6')">Photo 6</div>
+          </div></div>
+        </div>
+
+        <div class="album" id="album5">
+          <div class="album-cover" onclick="toggleAlbum('album5')">
+            <div class="album-cover-ph c5" data-en="Relaunch 2025<br>Cover photo placeholder" data-fr="Relancement 2025<br>Photo de couverture">Relaunch 2025<br>Cover photo placeholder</div>
+            <button class="album-expand-btn" data-en="View photos" data-fr="Voir les photos">View photos</button>
+          </div>
+          <div class="album-info"><h4 data-en="Relaunch Ceremony, 2025" data-fr="Cérémonie de relancement, 2025">Relaunch Ceremony, 2025</h4><p data-en="Official restart with partner schools in Fort-Liberté, April 2025" data-fr="Redémarrage officiel avec les écoles partenaires à Fort-Liberté, avril 2025">Official restart with partner schools in Fort-Liberté, April 2025</p><div class="album-count" data-en="9 photos" data-fr="9 photos">9 photos</div>
+          <div class="album-strip">
+            <div class="album-strip-ph" onclick="openLightbox('Relaunch 2025, photo 1')">Photo 1</div>
+            <div class="album-strip-ph" onclick="openLightbox('Relaunch 2025, photo 2')">Photo 2</div>
+            <div class="album-strip-ph" onclick="openLightbox('Relaunch 2025, photo 3')">Photo 3</div>
+            <div class="album-strip-ph" onclick="openLightbox('Relaunch 2025, photo 4')">Photo 4</div>
+            <div class="album-strip-ph" onclick="openLightbox('Relaunch 2025, photo 5')">Photo 5</div>
+          </div></div>
+        </div>
+
+        <div class="album" id="album6">
+          <div class="album-cover" onclick="toggleAlbum('album6')">
+            <div class="album-cover-ph c6" data-en="Sustainability Contest<br>Cover photo placeholder" data-fr="Concours Durabilité<br>Photo de couverture">Sustainability Contest<br>Cover photo placeholder</div>
+            <button class="album-expand-btn" data-en="View photos" data-fr="Voir les photos">View photos</button>
+          </div>
+          <div class="album-info"><h4 data-en="Youth Sustainability Contest" data-fr="Concours Jeunesse Durabilité">Youth Sustainability Contest</h4><p data-en="Students presenting ideas across 14 communes" data-fr="Élèves présentant leurs idées dans 14 communes">Students presenting sustainable development ideas, 14 communes</p><div class="album-count" data-en="7 photos" data-fr="7 photos">7 photos</div>
+          <div class="album-strip">
+            <div class="album-strip-ph" onclick="openLightbox('Sustainability Contest, photo 1')">Photo 1</div>
+            <div class="album-strip-ph" onclick="openLightbox('Sustainability Contest, photo 2')">Photo 2</div>
+            <div class="album-strip-ph" onclick="openLightbox('Sustainability Contest, photo 3')">Photo 3</div>
+            <div class="album-strip-ph" onclick="openLightbox('Sustainability Contest, photo 4')">Photo 4</div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">COJEHA<span class="footer-dot"></span></div><div class="footer-tag">Centre d'Organisation de la Jeunesse d'Haïti.</div><div class="footer-slogan">Faites du bien à la nation, faites-vous du bien !</div></div>
+      <div class="fl"><h5 data-en="Navigate" data-fr="Navigation">Navigate</h5><a onclick="goPage('home')" data-en="Home" data-fr="Accueil">Home</a><a onclick="goPage('story')" data-en="Our Story" data-fr="Notre histoire">Our Story</a><a onclick="goPage('programs')" data-en="Programs" data-fr="Programmes">Programs</a><a onclick="goPage('events')" data-en="Events" data-fr="Événements">Events</a><a onclick="goPage('team')" data-en="Team" data-fr="Équipe">Team</a></div>
+      <div class="fl"><h5 data-en="Support" data-fr="Soutenir">Support</h5><a onclick="goPage('donate')" data-en="Donate" data-fr="Faire un don">Donate</a><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">GoFundMe</a></div>
+    </div>
+    <div class="footer-btm"><span>© 2026 COJEHA</span><span>cojeha.org</span></div>
+  </footer>
+</div>
+
+<!-- ══ EVENTS ══ -->
+<div class="page events-page" id="page-events">
+  <div class="back-bar" style="background:transparent;border-bottom:1px solid rgba(13,26,58,0.08);">
+    <button class="back-btn" onclick="historyBack()" data-en="Back" data-fr="Retour">Back</button><span class="breadcrumb" data-en="Events" data-fr="Événements">Events</span>
+  </div>
+  <div class="section" style="padding-bottom:40px;">
+    <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;">
+      <div><div class="section-kicker fi" data-en="What's coming" data-fr="Ce qui arrive">What's coming</div><h2 class="title fi" style="color:var(--navy);margin-top:16px;" data-en="Events and<br><em>milestones.</em>" data-fr="Événements et<br><em>jalons.</em>">Events and<br><em>milestones.</em></h2></div>
+      <p class="fi" style="font-size:15px;color:rgba(13,26,58,0.55);line-height:1.85;align-self:end;" data-en="We move when we have the means. Here is where we are and where we are headed." data-fr="Nous avançons quand nous en avons les moyens. Voici où nous en sommes et où nous allons.">We move when we have the means. Here is where we are and where we are headed.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0;padding-bottom:92px;">
+    <div class="section-inner">
+      <div class="event-row fi"><div class="e-date"><div class="e-mo" data-en="Apr" data-fr="Avr">Apr</div><div class="e-dy">2025</div></div><div><div class="e-h" data-en="Relaunch Ceremony, Partner Schools" data-fr="Cérémonie de relancement, Écoles partenaires">Relaunch Ceremony, Partner Schools</div><div class="e-p" data-en="Fort-Liberté, Northeast — Official restart with school representatives" data-fr="Fort-Liberté, Nord-Est — Redémarrage officiel avec les représentants des écoles">Fort-Liberté, Northeast. Official restart with school representatives</div></div><span class="e-badge eb-done" data-en="Completed" data-fr="Terminé">Completed</span></div>
+      <div class="event-row fi"><div class="e-date"><div class="e-mo" data-en="TBD" data-fr="À conf.">TBD</div><div class="e-dy">—</div></div><div><div class="e-h" data-en="School Grant Distribution, 2025 to 26 Cycle" data-fr="Distribution de Bourses, Cycle 2025 à 26">School Grant Distribution, 2025 to 26 Cycle</div><div class="e-p" data-en="Northeast Department. School fee payments to partner institutions" data-fr="Département du Nord-Est. Paiement des frais de scolarité aux institutions partenaires">Northeast Department. School fee payments to partner institutions</div></div><span class="e-badge eb-on" data-en="Confirmed" data-fr="Confirmé">Confirmed</span></div>
+      <div class="event-row fi"><div class="e-date"><div class="e-mo">2026</div><div class="e-dy">—</div></div><div><div class="e-h" data-en="Mobile Health Clinic, Pilot Launch" data-fr="Clinique Mobile de Santé, Lancement pilote">Mobile Health Clinic, Pilot Launch</div><div class="e-p" data-en="Northeast, Location TBD. Free consultations with health sector partners" data-fr="Nord-Est, lieu à confirmer. Consultations gratuites avec les partenaires du secteur santé">Northeast, Location TBD. Free consultations with health sector partners</div></div><span class="e-badge eb-on" data-en="In Planning" data-fr="En préparation">In Planning</span></div>
+      <div class="event-row fi"><div class="e-date"><div class="e-mo">2026</div><div class="e-dy">—</div></div><div><div class="e-h" data-en="Youth Investment Ceremony" data-fr="Cérémonie d'Investissement Jeunesse">Youth Investment Ceremony</div><div class="e-p" data-en="Northeast. Excellence, peer connection, and community enrichment" data-fr="Nord-Est. Excellence, connexion entre pairs et enrichissement communautaire">Northeast. Excellence, peer connection, and community enrichment</div></div><span class="e-badge eb-on" data-en="In Planning" data-fr="En préparation">In Planning</span></div>
+      <div class="event-row fi"><div class="e-date"><div class="e-mo">2026</div><div class="e-dy">—</div></div><div><div class="e-h" data-en="Agribusiness Essay Contest, Return Edition" data-fr="Concours Agribusiness, Édition de retour">Agribusiness Essay Contest, Return Edition</div><div class="e-p" data-en="14 Communes, Northeast. Youth sustainability writing and presentation" data-fr="14 communes, Nord-Est. Rédaction et présentation sur la durabilité">14 Communes, Northeast. Youth sustainability writing and presentation</div></div><span class="e-badge eb-ex" data-en="Exploring" data-fr="En réflexion">Exploring</span></div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">COJEHA<span class="footer-dot"></span></div><div class="footer-tag">Centre d'Organisation de la Jeunesse d'Haïti.</div><div class="footer-slogan">Faites du bien à la nation, faites-vous du bien !</div></div>
+      <div class="fl"><h5 data-en="Navigate" data-fr="Navigation">Navigate</h5><a onclick="goPage('home')" data-en="Home" data-fr="Accueil">Home</a><a onclick="goPage('story')" data-en="Our Story" data-fr="Notre histoire">Our Story</a><a onclick="goPage('programs')" data-en="Programs" data-fr="Programmes">Programs</a><a onclick="goPage('gallery')" data-en="Gallery" data-fr="Galerie" style="display:none">Gallery</a><a onclick="goPage('team')" data-en="Team" data-fr="Équipe">Team</a></div>
+      <div class="fl"><h5 data-en="Support" data-fr="Soutenir">Support</h5><a onclick="goPage('donate')" data-en="Donate" data-fr="Faire un don">Donate</a><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">GoFundMe</a></div>
+    </div>
+    <div class="footer-btm"><span>© 2026 COJEHA</span><span>cojeha.org</span></div>
+  </footer>
+</div>
+
+<!-- ══ TEAM ══ -->
+<div class="page" id="page-team">
+  <div class="back-bar"><button class="back-btn" onclick="historyBack()" data-en="Back" data-fr="Retour">Back</button><span class="breadcrumb" data-en="Team" data-fr="Équipe">Team</span></div>
+  <div class="section" style="background:linear-gradient(160deg,var(--sky) 0%,var(--sky-lt) 50%,#f0f8ff 100%);padding-bottom:64px;">
+    <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;">
+      <div><div class="section-kicker fi" data-en="The people" data-fr="Les personnes">The people</div><h2 class="title fi" style="color:var(--navy);margin-top:16px;" data-en="Behind<br><em>every child.</em>" data-fr="Derrière<br><em>chaque enfant.</em>">Behind<br><em>every child.</em></h2></div>
+      <p class="fi" style="font-size:15px;line-height:1.88;color:rgba(13,26,58,0.6);align-self:end;" data-en="COJEHA is run by people who are from here, for here. We are not a foreign intervention. We are neighbors who decided to act." data-fr="COJEHA est dirigé par des personnes d'ici, pour ici. Nous ne sommes pas une intervention étrangère. Nous sommes des voisins qui ont décidé d'agir.">COJEHA is run by people who are from here, for here. We are not a foreign intervention. We are neighbors who decided to act.</p>
+    </div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card fi">
+      <div class="avatar av1"><!-- PHOTO PLACEHOLDER: Replace with <img src="nancy-michel.jpg" style="width:100%;height:100%;object-fit:cover;"> --><p>Photo of Nancy Michel<br>Portrait orientation</p></div>
+      <div class="team-info"><h4>Nancy Michel</h4><div class="role" data-en="President and Founder" data-fr="Présidente et Fondatrice">President and Founder</div><p class="bio" data-en="Founded COJEHA in 2017. Has led every program, every pivot, and every relaunch since." data-fr="A fondé COJEHA en 2017. A dirigé chaque programme, chaque pivot et chaque relancement depuis.">Founded COJEHA in 2017. Has led every program, every pivot, and every relaunch since.</p></div>
+    </div>
+    <div class="team-card fi">
+      <div class="avatar av2"><!-- PHOTO PLACEHOLDER: Replace with <img src="erika-damas.jpg" style="width:100%;height:100%;object-fit:cover;"> --><p>Photo of Erika Damas<br>Portrait orientation</p></div>
+      <div class="team-info"><h4>Erika Damas</h4><div class="role" data-en="Co-Executive Director" data-fr="Co-Directrice Exécutive">Co-Executive Director</div><p class="bio" data-en="[Add bio]" data-fr="[Ajouter une biographie]">[Add bio]</p></div>
+    </div>
+    <div class="team-card fi">
+      <div class="avatar av3"><!-- PHOTO PLACEHOLDER: Replace with <img src="bendja-saintilus.jpg" style="width:100%;height:100%;object-fit:cover;"> --><p>Photo of Bendja Saintilus<br>Portrait orientation</p></div>
+      <div class="team-info"><h4>Bendja Saintilus</h4><div class="role" data-en="Treasurer" data-fr="Trésorier">Treasurer</div><p class="bio" data-en="[Add bio]" data-fr="[Ajouter une biographie]">[Add bio]</p></div>
+    </div>
+    <div class="team-card fi">
+      <div class="avatar av4"><!-- PHOTO PLACEHOLDER: Replace with <img src="mith-suca-fede-perissien.jpg" style="width:100%;height:100%;object-fit:cover;"> --><p>Photo of Mith-Suca Fede Perissien<br>Portrait orientation</p></div>
+      <div class="team-info"><h4>Mith-Suca Fede Perissien</h4><div class="role" data-en="Executive Assistant" data-fr="Assistante de Direction">Executive Assistant</div><p class="bio" data-en="[Add bio]" data-fr="[Ajouter une biographie]">[Add bio]</p></div>
+    </div>
+  </div>
+  <div style="height:72px;"></div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">COJEHA<span class="footer-dot"></span></div><div class="footer-tag">Centre d'Organisation de la Jeunesse d'Haïti.</div><div class="footer-slogan">Faites du bien à la nation, faites-vous du bien !</div></div>
+      <div class="fl"><h5 data-en="Navigate" data-fr="Navigation">Navigate</h5><a onclick="goPage('home')" data-en="Home" data-fr="Accueil">Home</a><a onclick="goPage('story')" data-en="Our Story" data-fr="Notre histoire">Our Story</a><a onclick="goPage('programs')" data-en="Programs" data-fr="Programmes">Programs</a><a onclick="goPage('gallery')" data-en="Gallery" data-fr="Galerie" style="display:none">Gallery</a><a onclick="goPage('events')" data-en="Events" data-fr="Événements">Events</a></div>
+      <div class="fl"><h5 data-en="Support" data-fr="Soutenir">Support</h5><a onclick="goPage('donate')" data-en="Donate" data-fr="Faire un don">Donate</a><a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">GoFundMe</a></div>
+    </div>
+    <div class="footer-btm"><span>© 2026 COJEHA</span><span>cojeha.org</span></div>
+  </footer>
+</div>
+
+<!-- ══ DONATE ══ -->
+<div class="page" id="page-donate">
+  <div class="back-bar"><button class="back-btn" onclick="historyBack()" data-en="Back" data-fr="Retour">Back</button><span class="breadcrumb" data-en="Donate" data-fr="Faire un don">Donate</span></div>
+  <div class="donate-hero">
+    <div class="section-inner">
+      <div class="section-kicker fi" data-en="Support the mission" data-fr="Soutenir la mission">Support the mission</div>
+      <h2 class="fi" style="font-family:'Cormorant Garamond',serif;font-size:clamp(56px,8vw,100px);font-weight:700;line-height:.9;color:var(--navy);letter-spacing:-.02em;margin-top:16px;" data-en="Help us<br><em style='font-style:italic;color:var(--blue)'>grow.</em>" data-fr="Aidez-nous à<br><em style='font-style:italic;color:var(--blue)'>grandir.</em>">Help us<br><em style="font-style:italic;color:var(--blue)">grow.</em></h2>
+      <p class="donate-hero-sub fi" data-en="Every contribution goes directly to children's school fees, program operations, and the construction of our community center. No amount is too small to matter." data-fr="Chaque contribution va directement aux frais de scolarité des enfants, aux opérations des programmes et à la construction de notre centre communautaire. Aucun montant n'est trop petit.">Every contribution goes directly to children's school fees, program operations, and the construction of our community center. No amount is too small to matter.</p>
+      <a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" class="btn-yellow fi" style="margin-top:28px;display:inline-block;" data-en="Donate via GoFundMe" data-fr="Faire un don via GoFundMe">Donate via GoFundMe</a>
+    </div>
+  </div>
+
+  <div class="section" style="background:var(--white);padding-bottom:24px;">
+    <div class="section-inner">
+      <!-- MAY 2026 UPDATE BOX -->
+      <div class="update-box fi">
+        <div class="update-tag" data-en="MAY 2026 UPDATE" data-fr="MISE À JOUR MAI 2026">MAY 2026 UPDATE</div>
+        <h3 data-en="Where things stand today." data-fr="Où nous en sommes aujourd'hui.">Where things stand today.</h3>
+        <p data-en="We closed out the 2024 to 2025 school year having supported over 200 students, more than double what we managed the year before. Enrollment for the 2025 to 2026 cycle is underway and our goal is to more than double again. Construction planning for the Fort-Liberté community center is in progress. Mobile health clinic partnerships are being finalized. Every dollar donated right now goes directly into the next cycle." data-fr="Nous avons terminé l'année scolaire 2024 à 2025 en ayant soutenu plus de 200 élèves, soit plus du double de l'année précédente. Les inscriptions pour le cycle 2025 à 2026 sont en cours et notre objectif est de plus que doubler à nouveau. La planification de la construction du centre communautaire de Fort-Liberté est en cours. Les partenariats de cliniques mobiles sont en cours de finalisation. Chaque dollar donné va directement dans le prochain cycle.">We closed out the 2024 to 2025 school year having supported over 200 students, more than double what we managed the year before. Enrollment for the 2025 to 2026 cycle is underway and our goal is to more than double again. Construction planning for the Fort-Liberté community center is in progress. Mobile health clinic partnerships are being finalized. Every dollar donated right now goes directly into the next cycle.</p>
+        <a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" class="btn-navy" data-en="Donate now" data-fr="Faire un don maintenant">Donate now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="donate-body section-inner">
+    <div class="tiers-col">
+      <h3 data-en="What your gift does" data-fr="Ce que fait votre don">What your gift does</h3>
+      <p class="tiers-note" data-en="Click any amount to go directly to GoFundMe." data-fr="Cliquez sur n'importe quel montant pour accéder à GoFundMe.">Click any amount to go directly to GoFundMe.</p>
+      <a class="tier" href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">
+        <div class="tier-amt">$10</div><div class="tier-txt" data-en="School supplies for one student for a month." data-fr="Fournitures scolaires pour un élève pendant un mois.">School supplies for one student for a month.</div><div class="tier-arrow">→</div>
+      </a>
+      <a class="tier" href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">
+        <div class="tier-amt">$50</div><div class="tier-txt" data-en="School fees for one student for an academic term." data-fr="Frais de scolarité pour un élève pendant un trimestre.">School fees for one student for an academic term.</div><div class="tier-arrow">→</div>
+      </a>
+      <a class="tier" href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank">
+        <div class="tier-amt">$150</div><div class="tier-txt" data-en="A full youth investment ceremony, meals, prizes, and presence." data-fr="Une cérémonie complète, repas, prix et présence.">A full youth investment ceremony, meals, prizes, and presence.</div><div class="tier-arrow">→</div>
+      </a>
+    </div>
+    <div class="connect-col">
+      <h3 data-en="Follow our work" data-fr="Suivre notre travail">Follow our work</h3>
+      <div class="soc-list">
+        <a href="https://www.facebook.com/people/Centre-dOrganisation-de-la-Jeunesse-dHa%C3%AFti-COJEHA/100079582386591/" target="_blank" class="soc">Facebook <span>↗</span></a>
+        <a href="https://www.gofundme.com/f/help-empower-haitis-youth-brighter-sustainable-future" target="_blank" class="soc">GoFundMe <span>↗</span></a>
+        <a href="https://www.cojeha.org" target="_blank" class="soc">cojeha.org <span>↗</span></a>
+        <a href="mailto:cojeha2019@gmail.com" class="soc">cojeha2019@gmail.com <span>↗</span></a>
+      </div>
+      <h3 style="margin-bottom:18px;" data-en="Get in touch" data-fr="Nous contacter">Get in touch</h3>
+      <div class="fg"><label data-en="Full Name" data-fr="Nom complet">Full Name</label><input type="text" placeholder="Your full name" data-en="Your full name" data-fr="Votre nom complet"></div>
+      <div class="fg"><label data-en="Email Address" data-fr="Adresse e-mail">Email Address</label><input type="email" placeholder="you@email.com"></div>
+      <div class="fg"><label data-en="Message" data-fr="Message">Message</label><textarea placeholder="I'd like to partner, volunteer, or learn more..." data-en="I'd like to partner, volunteer, or learn more..." data-fr="Je souhaite m'impliquer, bénévoler ou en savoir plus..."></textarea></div>
+      <button class="btn-send" onclick="alert('Message sent! We will be in touch soon.')" data-en="Send Message" data-fr="Envoyer le message">Send Message</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">COJEHA<span class="footer-dot"></span></div><div class="footer-tag">Centre d'Organisation de la Jeunesse d'Haïti.</div><div class="footer-slogan">Faites du bien à la nation, faites-vous du bien !</div></div>
+      <div class="fl"><h5 data-en="Navigate" data-fr="Navigation">Navigate</h5><a onclick="goPage('home')" data-en="Home" data-fr="Accueil">Home</a><a onclick="goPage('story')" data-en="Our Story" data-fr="Notre histoire">Our Story</a><a onclick="goPage('programs')" data-en="Programs" data-fr="Programmes">Programs</a><a onclick="goPage('gallery')" data-en="Gallery" data-fr="Galerie" style="display:none">Gallery</a><a onclick="goPage('events')" data-en="Events" data-fr="Événements">Events</a><a onclick="goPage('team')" data-en="Team" data-fr="Équipe">Team</a></div>
+    </div>
+    <div class="footer-btm"><span>© 2026 COJEHA — Centre d'Organisation de la Jeunesse d'Haïti</span><span>cojeha.org</span></div>
+  </footer>
+</div>
+
+<script>
+/* ROUTING */
+let pageHistory = ['home'];
+let currentLang = 'en';
+
+function goPage(id, anchor) {
+  pageHistory.push(id);
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === id || (a.dataset.page === 'project' && id === 'story'));
+  });
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  if (anchor) {
+    setTimeout(() => {
+      const el = document.getElementById(anchor);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+  setTimeout(triggerAnimations, 80);
+}
+
+function historyBack() {
+  if (pageHistory.length > 1) {
+    pageHistory.pop();
+    const prev = pageHistory[pageHistory.length - 1];
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + prev).classList.add('active');
+    document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+      a.classList.toggle('active', a.dataset.page === prev);
+    });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    setTimeout(triggerAnimations, 80);
+  }
+}
+
+/* LANGUAGE - translates ALL elements with data-en/data-fr */
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'fr' : 'en';
+  document.getElementById('langBtn').textContent = currentLang === 'en' ? 'FR' : 'EN';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + currentLang);
+    if (!text) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = text;
+    } else {
+      el.innerHTML = text;
+    }
+  });
+  // Update placeholders separately
+  document.querySelectorAll('input[data-en], textarea[data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + currentLang);
+    if (text) el.placeholder = text;
+  });
+}
+
+/* ANIMATIONS */
+function triggerAnimations() {
+  const els = document.querySelectorAll('.page.active .fi, .page.active .fi-l, .page.active .fi-r');
+  els.forEach(el => el.classList.remove('vis'));
+  // Use requestAnimationFrame to ensure DOM is painted before adding vis
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      els.forEach((el, i) => {
+        setTimeout(() => el.classList.add('vis'), i * 60);
+      });
+    });
+  });
+}
+triggerAnimations();
+
+/* PROGRAMS ACCORDION */
+function toggleProg(id) {
+  const row = document.getElementById(id);
+  const expand = document.getElementById(id + '-expand');
+  const isOpen = row.classList.contains('open');
+  document.querySelectorAll('.prog-row.open').forEach(r => {
+    r.classList.remove('open');
+    const exp = document.getElementById(r.id + '-expand');
+    if (exp) exp.style.height = '0';
+  });
+  if (!isOpen) {
+    row.classList.add('open');
+    expand.style.height = expand.scrollHeight + 'px';
+  }
+}
+
+/* GALLERY ALBUM EXPAND */
+function toggleAlbum(id) {
+  const album = document.getElementById(id);
+  const isExpanded = album.classList.contains('expanded');
+  document.querySelectorAll('.album.expanded').forEach(a => a.classList.remove('expanded'));
+  if (!isExpanded) album.classList.add('expanded');
+}
+
+/* LIGHTBOX */
+function openLightbox(caption) {
+  document.getElementById('lightboxCaption').textContent = caption;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* INIT */
+document.querySelector('[data-page="home"]').classList.add('active');
+</script>
+</body>
+</html>
